@@ -1,37 +1,41 @@
 {
-  "name": "passport-openidconnect",
-  "version": "0.0.1",
-  "description": "OpenID Connect authentication strategy for Passport.",
-  "keywords": ["passport", "openid", "openidconnect", "auth", "authn", "authentication", "identity"],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jaredhanson/passport-openidconnect.git"
-  },
-  "bugs": {
-    "url": "http://github.com/jaredhanson/passport-openidconnect/issues"
-  },
+  "name": "passport-oidc",
+  "version": "0.0.0",
+  "description": "OpenID Connect authentication strategy for Passport and Node.js",
+  "homepage": "",
   "author": {
-    "name": "Jared Hanson",
-    "email": "jaredhanson@gmail.com",
-    "url": "http://www.jaredhanson.net/"
+    "name": "Benjamin Kroeger",
+    "email": "benjamin.kroeger@gmail.com",
+    "url": ""
   },
-  "licenses": [ {
-    "type": "MIT",
-    "url": "http://www.opensource.org/licenses/MIT" 
-  } ],
-  "main": "./lib",
-  "dependencies": {
-    "pkginfo": "0.2.x",
-    "passport": "~0.1.1",
-    "oauth": "0.9.x",
-    "webfinger": "0.3.x"
-  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    "oidc",
+    "openidconnect",
+    "passport"
+  ],
+  "repository": "git@github.com:benkroeger/passport-oidc.git",
   "devDependencies": {
-    "mocha": "1.x.x",
-    "chai": "1.x.x"
+    "express": "4.13.3",
+    "gulp": "^3.6.0",
+    "gulp-coveralls": "^0.1.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.9.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-nsp": "^2.1.0",
+    "gulp-plumber": "^1.0.0"
   },
   "scripts": {
-    "test": "NODE_PATH=./lib node_modules/.bin/mocha --reporter spec --require test/node/bootstrap test/*.test.js"
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
   },
-  "engines": { "node": ">= 0.6.0" }
+  "license": "MIT",
+  "dependencies": {
+    "oauth": "0.9.14",
+    "passport": "0.3.0"
+  }
 }

@@ -1,20 +1,32 @@
-# Passport-OpenID Connect
+# passport-oidc [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+> OpenID Connect authentication strategy for Passport and Node.js
 
-[Passport](https://github.com/jaredhanson/passport) strategy for authenticating
-with [OpenID Connect](http://openid.net/connect/).
 
-This module lets you authenticate using OpenID Connect in your Node.js
-applications.  By plugging into Passport, OpenID Connect authentication can be
-easily and unobtrusively integrated into any application or framework that
-supports [Connect](http://www.senchalabs.org/connect/)-style middleware,
-including [Express](http://expressjs.com/).
+## Install
 
-## Credits
+```sh
+$ npm install --save passport-oidc
+```
 
-  - [Jared Hanson](http://github.com/jaredhanson)
+
+## Usage
+
+```js
+var passportOidc = require('passport-oidc');
+
+passportOidc('Rainbow');
+```
 
 ## License
 
-[The MIT License](http://opensource.org/licenses/MIT)
+MIT © [Benjamin Kroeger]()
 
-Copyright (c) 2011-2013 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+
+[npm-image]: https://badge.fury.io/js/passport-oidc.svg
+[npm-url]: https://npmjs.org/package/passport-oidc
+[travis-image]: https://travis-ci.org/benkroeger/passport-oidc.svg?branch=master
+[travis-url]: https://travis-ci.org/benkroeger/passport-oidc
+[daviddm-image]: https://david-dm.org/benkroeger/passport-oidc.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/benkroeger/passport-oidc
+[coveralls-image]: https://coveralls.io/repos/benkroeger/passport-oidc/badge.svg
+[coveralls-url]: https://coveralls.io/r/benkroeger/passport-oidc
