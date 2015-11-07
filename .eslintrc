@@ -4,6 +4,9 @@
     "node": true,
     "mocha": true
   },
+  "ecmaFeatures": {
+    "templateStrings": true
+  },
   "rules": {
     "array-bracket-spacing": [
       2,

@@ -8,14 +8,17 @@
 $ npm install --save passport-oidc
 ```
 
+## Changelog
 
-## Usage
+### 0.0.1
 
-```js
-var passportOidc = require('passport-oidc');
+#### Breaking Changes
+* remove support for claim `user_id`, which was in spec prior to OpenID Connect Basic Client Profile 1.0 - draft 22
 
-passportOidc('Rainbow');
-```
+## Credits
+
+  - [Jared Hanson](http://github.com/jaredhanson)
+
 
 ## License
 

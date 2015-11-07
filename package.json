@@ -1,6 +1,6 @@
 {
   "name": "passport-oidc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "OpenID Connect authentication strategy for Passport and Node.js",
   "homepage": "",
   "author": {
