@@ -2,11 +2,11 @@
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
-// var assert = require('assert');
-var http = require('http');
-var express = require('express');
-var passport = require('passport');
-var OIDCStrategy = require('../lib').Strategy;
+// const assert = require('assert');
+const http = require('http');
+const express = require('express');
+const passport = require('passport');
+const OIDCStrategy = require('../lib').Strategy;
 
 // describe('passport-oidc', function () {
 //   it('should have unit test!', function () {
@@ -15,7 +15,7 @@ var OIDCStrategy = require('../lib').Strategy;
 // });
 
 
-var app = express();
+const app = express();
 
 app.use(passport.initialize());
 
@@ -28,43 +28,42 @@ passport.use('blueId', new OIDCStrategy({
   userInfoURL: '',
   clientID: process.env.OIDC_CLIENT_ID,
   clientSecret: process.env.OIDC_CLIENT_SECRET,
-  callbackURL: 'https://logoshub.ibm-sba.com/auth/oidc/callback'
-}, function verify(req, iss, sub, profile, jwtClaims, accessToken, refreshToken, params, done) {
+  callbackURL: 'https://logoshub.ibm-sba.com/auth/oidc/callback',
+}, (req, iss, sub, profile, jwtClaims, accessToken, refreshToken, params, done) => {
   if (jwtClaims && jwtClaims.sub) {
     return done(null, jwtClaims);
   }
-  done(null, false);
+  return done(null, false);
 }));
 
 app.get('/auth/oidc/login', passport.authenticate('blueId', {
-  session: false
+  session: false,
 }));
 
 app.get('/auth/oidc/callback', passport.authenticate('blueId', {
-  session: false
-}), function (req, res) {
+  session: false,
+}), (req, res) => {
   res.json(req.user);
 });
 
 
 app.server = http.createServer(app);
 // Start server
-var bindInterface = '127.0.0.1';
-var httpPort = 80;
-var httpsPort = 443;
-app.server.listen(httpPort, bindInterface, function () {
+const bindInterface = '127.0.0.1';
+const httpPort = 80;
+const httpsPort = 443;
+app.server.listen(httpPort, bindInterface, () => {
   console.log(`Listening for HTTP requests on ${bindInterface}:${httpPort}`);
 });
 
-var https = require('https');
-var fs = require('fs');
-var path = require('path');
-var httpsOpts = {
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+const httpsOpts = {
   key: fs.readFileSync(path.join(__dirname, 'ssl/localhost-key.pem')),
-  cert: fs.readFileSync(path.join(__dirname, 'ssl/localhost-cer.pem'))
+  cert: fs.readFileSync(path.join(__dirname, 'ssl/localhost-cer.pem')),
 };
 
-https.createServer(httpsOpts, app).listen(httpsPort, bindInterface, function () {
+https.createServer(httpsOpts, app).listen(httpsPort, bindInterface, () => {
   console.log(`Listening for HTTP requests on ${bindInterface}:${httpsPort}`);
 });
-
